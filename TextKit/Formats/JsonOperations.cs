@@ -1,0 +1,141 @@
+﻿using System.Text.Json;
+using TextKit.Tools;
+
+namespace TextKit.Formats
+{
+	/// <summary>
+	/// Запись и чтение строк json-формата из файла и в него.
+	/// </summary>
+	public static class JsonOperations
+	{
+		#region Reading methods
+
+		/// <summary>
+		/// Прочитать содержимое файла и десериализовать его из JSON.
+		/// </summary>
+		/// <typeparam name="T">Класс, в который необходимо десериализировать содержимое.</typeparam>
+		/// <param name="path">Путь к файлу.</param>
+		/// <param name="streamOptions">Параметры потока.</param>
+		/// <param name="options">Параметры десериализации.</param>
+		/// <returns>Десериализованный объект.</returns>
+		public static T? ReadJson<T>(string path, FileStreamOptions streamOptions, JsonSerializerOptions? options = null)
+		{
+			Validation.CheckRead(streamOptions);
+
+			using FileStream stream = new(path, streamOptions);
+
+			return JsonSerializer.Deserialize<T>(stream, options);
+		}
+
+		/// <summary>
+		/// Асинхронно прочитать содержимое файла и десериализовать его из JSON.
+		/// </summary>
+		/// <typeparam name="T">Класс, в который необходимо десериализировать содержимое.</typeparam>
+		/// <param name="path">Путь к файлу.</param>
+		/// <param name="streamOptions">Параметры потока.</param>
+		/// <param name="options">Параметры десериализации.</param>
+		/// <returns>Десериализованный объект.</returns>
+		public static async Task<T?> ReadJsonAsync<T>(string path, FileStreamOptions streamOptions, JsonSerializerOptions? options = null)
+		{
+			Validation.CheckRead(streamOptions);
+
+			using FileStream stream = new(path, streamOptions);
+
+			return await JsonSerializer.DeserializeAsync<T>(stream, options);
+		}
+
+		/// <summary>
+		/// Прочитать содержимое потока и десериализовать его из JSON.
+		/// </summary>
+		/// <typeparam name="T">Класс, в который необходимо десериализировать содержимое.</typeparam>
+		/// <param name="stream">Поток, в котором содержится сериализованная строка.</param>
+		/// <param name="options">Параметры десериализации.</param>
+		/// <returns>Десериализованный объект.</returns>
+		public static T? ReadJson<T>(Stream stream, JsonSerializerOptions? options = null)
+		{
+			Validation.CheckRead(stream);
+
+			return JsonSerializer.Deserialize<T>(stream, options);
+		}
+
+		/// <summary>
+		/// Асинхронно прочитать содержимое потока и десериализовать его из JSON.
+		/// </summary>
+		/// <typeparam name="T">Класс, в который необходимо десериализировать содержимое.</typeparam>
+		/// <param name="stream">Поток, в котором содержится сериализованная строка.</param>
+		/// <param name="options">Параметры десериализации.</param>
+		/// <returns>Десериализованный объект.</returns>
+		public static async Task<T?> ReadJsonAsync<T>(Stream stream, JsonSerializerOptions? options = null)
+		{
+			Validation.CheckRead(stream);
+
+			return await JsonSerializer.DeserializeAsync<T>(stream, options);
+		}
+
+		#endregion
+
+		#region Writing methods
+
+		/// <summary>
+		/// Сериализует объект в строку json-формата и записывает в файл.
+		/// </summary>
+		/// <typeparam name="T">Класс, который необходимо сериализировать в JSON.</typeparam>
+		/// <param name="path">Путь к файлу.</param>
+		/// <param name="obj">Объект для сериализации.</param>
+		/// <param name="streamOptions">Параметры потока.</param>
+		/// <param name="options">Параметры сериализации.</param>
+		public static void WriteJson<T>(string path, T obj, FileStreamOptions streamOptions, JsonSerializerOptions? options = null)
+		{
+			Validation.CheckWrite(streamOptions);
+
+			using FileStream stream = new(path, streamOptions);
+			JsonSerializer.Serialize(stream, obj, options);
+		}
+
+		/// <summary>
+		/// Асинхронно сериализует объект в строку json-формата и записывает в файл.
+		/// </summary>
+		/// <typeparam name="T">Класс, который необходимо сериализировать в JSON.</typeparam>
+		/// <param name="path">Путь к файлу.</param>
+		/// <param name="obj">Объект для сериализации.</param>
+		/// <param name="streamOptions">Параметры потока.</param>
+		/// <param name="options">Параметры сериализации.</param>
+		public static async Task WriteJsonAsync<T>(string path, T obj, FileStreamOptions streamOptions, JsonSerializerOptions? options = null)
+		{
+			Validation.CheckWrite(streamOptions);
+
+			using FileStream stream = new(path, streamOptions);
+			await JsonSerializer.SerializeAsync(stream, obj, options);
+		}
+
+		/// <summary>
+		/// Сериализует объект в строку json-формата и записывает в поток.
+		/// </summary>
+		/// <typeparam name="T">Класс, который необходимо сериализировать в JSON.</typeparam>
+		/// <param name="stream">Поток, в который будет записана десериализованная строка json-формата.</param>
+		/// <param name="obj">Объект для сериализации.</param>
+		/// <param name="options">Параметры сериализации.</param>
+		public static void WriteJson<T>(Stream stream, T obj, JsonSerializerOptions? options = null)
+		{
+			Validation.CheckWrite(stream);
+
+			JsonSerializer.Serialize(stream, obj, options);
+		}
+
+		/// <summary>
+		/// Асинхронно сериализует объект в строку json-формата и записывает в поток.
+		/// </summary>
+		/// <typeparam name="T">Класс, который необходимо сериализировать в JSON.</typeparam>
+		/// <param name="stream">Поток, в который будет записана десериализованная строка json-формата.</param>
+		/// <param name="obj">Объект для сериализации.</param>
+		/// <param name="options">Параметры сериализации.</param>
+		public static async Task WriteJsonAsync<T>(Stream stream, T obj, JsonSerializerOptions? options = null)
+		{
+			Validation.CheckWrite(stream);
+
+			await JsonSerializer.SerializeAsync(stream, obj, options);
+		}
+
+		#endregion
+	}
+}
