@@ -1,7 +1,7 @@
-﻿using System.Text.Json;
-using TextKit.Tools;
+﻿using KebabGGbab.Extensions.TextKit.Tools;
+using System.Text.Json;
 
-namespace TextKit.Formats
+namespace KebabGGbab.Extensions.TextKit.Formats
 {
 	/// <summary>
 	/// Запись и чтение строк json-формата из файла и в него.

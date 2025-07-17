@@ -1,4 +1,4 @@
-﻿namespace TextKit.Tools
+﻿namespace KebabGGbab.Extensions.TextKit.Tools
 {
 	internal class Validation
 	{
@@ -28,11 +28,6 @@
 			if (streamOptions.Access != FileAccess.Write && streamOptions.Access != FileAccess.ReadWrite)
 			{
 				throw new ArgumentException("Нет доступа для записи в файл.", nameof(streamOptions));
-			}
-
-			if (streamOptions.Mode != FileMode.Create && streamOptions.Mode != FileMode.CreateNew && streamOptions.Mode != FileMode.Append && streamOptions.Mode != FileMode.Truncate)
-			{
-				throw new ArgumentException("FileMode должен быть Create, CreateNew, Append, Truncate.", nameof(streamOptions));
 			}
 		}
 
