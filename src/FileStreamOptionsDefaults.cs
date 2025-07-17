@@ -27,5 +27,18 @@
 				};
 			}
 		}
+
+		public static FileStreamOptions ReadWrite
+		{
+			get
+			{
+				return new FileStreamOptions()
+				{
+					Mode = FileMode.OpenOrCreate,
+					Access = FileAccess.ReadWrite,
+					Share = FileShare.Read
+				};
+			}
+		}
 	}
 }
