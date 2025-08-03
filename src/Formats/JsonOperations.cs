@@ -151,7 +151,8 @@ namespace KebabGGbab.Extensions.TextKit.Formats
 			Validation.CheckWrite(streamOptions);
 
 			using FileStream stream = new(path, streamOptions);
-			JsonSerializer.Serialize(stream, obj, options);
+
+			JsonSerializer.Serialize<T>(stream, obj, options);
 		}
 
 		/// <summary>
@@ -167,7 +168,8 @@ namespace KebabGGbab.Extensions.TextKit.Formats
 			Validation.CheckWrite(streamOptions);
 
 			using FileStream stream = new(path, streamOptions);
-			await JsonSerializer.SerializeAsync(stream, obj, options);
+
+			await JsonSerializer.SerializeAsync<T>(stream, obj, options);
 		}
 
 		/// <summary>
@@ -181,7 +183,7 @@ namespace KebabGGbab.Extensions.TextKit.Formats
 		{
 			Validation.CheckWrite(stream);
 
-			JsonSerializer.Serialize(stream, obj, options);
+			JsonSerializer.Serialize<T>(stream, obj, options);
 		}
 
 		/// <summary>
@@ -195,7 +197,7 @@ namespace KebabGGbab.Extensions.TextKit.Formats
 		{
 			Validation.CheckWrite(stream);
 
-			await JsonSerializer.SerializeAsync(stream, obj, options);
+			await JsonSerializer.SerializeAsync<T>(stream, obj, options);
 		}
 
 		#endregion
