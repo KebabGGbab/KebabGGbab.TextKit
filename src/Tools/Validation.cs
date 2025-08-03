@@ -1,4 +1,4 @@
-﻿namespace KebabGGbab.Extensions.TextKit.Tools
+﻿namespace KebabGGbab.TextKit.Tools
 {
 	internal class Validation
 	{

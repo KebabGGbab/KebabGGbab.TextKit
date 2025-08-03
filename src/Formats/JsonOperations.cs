@@ -1,7 +1,7 @@
-﻿using KebabGGbab.Extensions.TextKit.Tools;
+﻿using KebabGGbab.TextKit.Tools;
 using System.Text.Json;
 
-namespace KebabGGbab.Extensions.TextKit.Formats
+namespace KebabGGbab.TextKit.Formats
 {
 	/// <summary>
 	/// Запись и чтение строк json-формата из файла и в него.
@@ -152,7 +152,7 @@ namespace KebabGGbab.Extensions.TextKit.Formats
 
 			using FileStream stream = new(path, streamOptions);
 
-			JsonSerializer.Serialize<T>(stream, obj, options);
+			JsonSerializer.Serialize(stream, obj, options);
 		}
 
 		/// <summary>
@@ -169,7 +169,7 @@ namespace KebabGGbab.Extensions.TextKit.Formats
 
 			using FileStream stream = new(path, streamOptions);
 
-			await JsonSerializer.SerializeAsync<T>(stream, obj, options);
+			await JsonSerializer.SerializeAsync(stream, obj, options);
 		}
 
 		/// <summary>
@@ -183,7 +183,7 @@ namespace KebabGGbab.Extensions.TextKit.Formats
 		{
 			Validation.CheckWrite(stream);
 
-			JsonSerializer.Serialize<T>(stream, obj, options);
+			JsonSerializer.Serialize(stream, obj, options);
 		}
 
 		/// <summary>
@@ -197,7 +197,7 @@ namespace KebabGGbab.Extensions.TextKit.Formats
 		{
 			Validation.CheckWrite(stream);
 
-			await JsonSerializer.SerializeAsync<T>(stream, obj, options);
+			await JsonSerializer.SerializeAsync(stream, obj, options);
 		}
 
 		#endregion

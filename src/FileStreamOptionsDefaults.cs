@@ -1,4 +1,4 @@
-﻿namespace KebabGGbab.Extensions.TextKit
+﻿namespace KebabGGbab.TextKit
 {
 	public static class FileStreamOptionsDefaults
 	{
