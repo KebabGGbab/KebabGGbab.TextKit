@@ -20,7 +20,7 @@ namespace KebabGGbab.TextKit.Formats
 		/// <returns>Десериализованный объект.</returns>
 		public static T? ReadJson<T>(string path, FileStreamOptions streamOptions, JsonSerializerOptions? options = null)
 		{
-			Validation.CheckRead(streamOptions);
+			Validation.CanRead(streamOptions);
 
 			using FileStream stream = new(path, streamOptions);
 
@@ -37,7 +37,7 @@ namespace KebabGGbab.TextKit.Formats
 		/// <returns>Десериализованный объект.</returns>
 		public static object? ReadJson(string path, Type target, FileStreamOptions streamOptions, JsonSerializerOptions? options = null)
 		{
-			Validation.CheckRead(streamOptions);
+			Validation.CanRead(streamOptions);
 
 			using FileStream stream = new(path, streamOptions);
 
@@ -54,11 +54,11 @@ namespace KebabGGbab.TextKit.Formats
 		/// <returns>Десериализованный объект.</returns>
 		public static async Task<T?> ReadJsonAsync<T>(string path, FileStreamOptions streamOptions, JsonSerializerOptions? options = null)
 		{
-			Validation.CheckRead(streamOptions);
+			Validation.CanRead(streamOptions);
 
 			using FileStream stream = new(path, streamOptions);
 
-			return await JsonSerializer.DeserializeAsync<T>(stream, options);
+			return await JsonSerializer.DeserializeAsync<T>(stream, options).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -71,11 +71,11 @@ namespace KebabGGbab.TextKit.Formats
 		/// <returns>Десериализованный объект.</returns>
 		public static async Task<object?> ReadJsonAsync(string path, Type target, FileStreamOptions streamOptions, JsonSerializerOptions? options = null)
 		{
-			Validation.CheckRead(streamOptions);
+			Validation.CanRead(streamOptions);
 
 			using FileStream stream = new(path, streamOptions);
 
-			return await JsonSerializer.DeserializeAsync(stream, target, options);
+			return await JsonSerializer.DeserializeAsync(stream, target, options).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -87,7 +87,7 @@ namespace KebabGGbab.TextKit.Formats
 		/// <returns>Десериализованный объект.</returns>
 		public static T? ReadJson<T>(Stream stream, JsonSerializerOptions? options = null)
 		{
-			Validation.CheckRead(stream);
+			Validation.CanRead(stream);
 
 			return JsonSerializer.Deserialize<T>(stream, options);
 		}
@@ -101,7 +101,7 @@ namespace KebabGGbab.TextKit.Formats
 		/// <returns>Десериализованный объект.</returns>
 		public static object? ReadJson(Stream stream, Type target, JsonSerializerOptions? options = null)
 		{
-			Validation.CheckRead(stream);
+			Validation.CanRead(stream);
 
 			return JsonSerializer.Deserialize(stream, target, options);
 		}
@@ -115,9 +115,9 @@ namespace KebabGGbab.TextKit.Formats
 		/// <returns>Десериализованный объект.</returns>
 		public static async Task<T?> ReadJsonAsync<T>(Stream stream, JsonSerializerOptions? options = null)
 		{
-			Validation.CheckRead(stream);
+			Validation.CanRead(stream);
 
-			return await JsonSerializer.DeserializeAsync<T>(stream, options);
+			return await JsonSerializer.DeserializeAsync<T>(stream, options).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -129,9 +129,9 @@ namespace KebabGGbab.TextKit.Formats
 		/// <returns>Десериализованный объект.</returns>
 		public static async Task<object?> ReadJsonAsync(Stream stream, Type target, JsonSerializerOptions? options = null)
 		{
-			Validation.CheckRead(stream);
+			Validation.CanRead(stream);
 
-			return await JsonSerializer.DeserializeAsync(stream, target, options);
+			return await JsonSerializer.DeserializeAsync(stream, target, options).ConfigureAwait(false);
 		}
 
 		#endregion
@@ -148,7 +148,7 @@ namespace KebabGGbab.TextKit.Formats
 		/// <param name="options">Параметры сериализации.</param>
 		public static void WriteJson<T>(string path, T obj, FileStreamOptions streamOptions, JsonSerializerOptions? options = null)
 		{
-			Validation.CheckWrite(streamOptions);
+			Validation.CanWrite(streamOptions);
 
 			using FileStream stream = new(path, streamOptions);
 
@@ -165,11 +165,11 @@ namespace KebabGGbab.TextKit.Formats
 		/// <param name="options">Параметры сериализации.</param>
 		public static async Task WriteJsonAsync<T>(string path, T obj, FileStreamOptions streamOptions, JsonSerializerOptions? options = null)
 		{
-			Validation.CheckWrite(streamOptions);
+			Validation.CanWrite(streamOptions);
 
 			using FileStream stream = new(path, streamOptions);
 
-			await JsonSerializer.SerializeAsync(stream, obj, options);
+			await JsonSerializer.SerializeAsync(stream, obj, options).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -181,7 +181,7 @@ namespace KebabGGbab.TextKit.Formats
 		/// <param name="options">Параметры сериализации.</param>
 		public static void WriteJson<T>(Stream stream, T obj, JsonSerializerOptions? options = null)
 		{
-			Validation.CheckWrite(stream);
+			Validation.CanWrite(stream);
 
 			JsonSerializer.Serialize(stream, obj, options);
 		}
@@ -195,9 +195,9 @@ namespace KebabGGbab.TextKit.Formats
 		/// <param name="options">Параметры сериализации.</param>
 		public static async Task WriteJsonAsync<T>(Stream stream, T obj, JsonSerializerOptions? options = null)
 		{
-			Validation.CheckWrite(stream);
+			Validation.CanWrite(stream);
 
-			await JsonSerializer.SerializeAsync(stream, obj, options);
+			await JsonSerializer.SerializeAsync(stream, obj, options).ConfigureAwait(false);
 		}
 
 		#endregion

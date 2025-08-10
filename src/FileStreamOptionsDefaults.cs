@@ -21,22 +21,9 @@
 			{
 				return new FileStreamOptions()
 				{
-					Mode = FileMode.OpenOrCreate,
+					Mode = FileMode.Create,
 					Access = FileAccess.Write,
 					Share = FileShare.None
-				};
-			}
-		}
-
-		public static FileStreamOptions ReadWrite
-		{
-			get
-			{
-				return new FileStreamOptions()
-				{
-					Mode = FileMode.OpenOrCreate,
-					Access = FileAccess.ReadWrite,
-					Share = FileShare.Read
 				};
 			}
 		}
