@@ -1,4 +1,4 @@
-﻿namespace KebabGGbab.TextKit.Tools
+﻿namespace KebabGGbab.Json
 {
 	internal static class Validation
 	{

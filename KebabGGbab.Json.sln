@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35728.132
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KebabGGbab.TextKit", "src\KebabGGbab.TextKit.csproj", "{CDE38D7F-D31A-601E-B274-C4A9D2DA4FFD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KebabGGbab.Json", "src\KebabGGbab.Json.csproj", "{08D7EC33-A48B-5B3C-E8BF-3DD68BD33F86}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CDE38D7F-D31A-601E-B274-C4A9D2DA4FFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CDE38D7F-D31A-601E-B274-C4A9D2DA4FFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CDE38D7F-D31A-601E-B274-C4A9D2DA4FFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CDE38D7F-D31A-601E-B274-C4A9D2DA4FFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08D7EC33-A48B-5B3C-E8BF-3DD68BD33F86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08D7EC33-A48B-5B3C-E8BF-3DD68BD33F86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08D7EC33-A48B-5B3C-E8BF-3DD68BD33F86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08D7EC33-A48B-5B3C-E8BF-3DD68BD33F86}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
